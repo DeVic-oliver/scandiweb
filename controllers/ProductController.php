@@ -1,5 +1,6 @@
 <?php
     require './config.php';
+    require './models/Product.php';
 
     class ProductController{
         
@@ -20,5 +21,6 @@
         
         public function show(){
             echo $this->html;
+            var_dump(Product::getAllProducts());
         }
     }

@@ -1,3 +1,2 @@
 $(()=>{
-    alert("hello world");
 })

@@ -2,7 +2,6 @@
 require 'controllers/ProductController.php';
 require 'views/header.html';
 
-
 $controller = new ProductController();
 
 if(isset($_REQUEST) && !empty($_REQUEST['class'])){
