@@ -3,40 +3,46 @@
         <h1>Product Add</h1>
     </div>
     <div>
-        <button>SAVE</button>
+        <button id="store-product">SAVE</button>
         <a href="/scandiweb/">CANCEL</a>
     </div>
 </section>
 <section>
-    <form action="" class="product-list">
-       <fieldset>
+    <form id="store-product-form" action="/scandiweb/?class=ProductController&method=storeProduct" class="product-list" method="POST">
+       
+        <fieldset>
             <label for="sku">SKU</label>
             <input type="text" id="sku" name="product_sku">
-       </fieldset>
+        </fieldset>
+       
        <fieldset>
             <label for="name">Name</label>
             <input type="text" id="name" name="product_title">
         </fieldset>
+       
         <fieldset>
             <label for="price">Price ($)</label>
             <input type="number" id="price" name="product_price">
         </fieldset>
+       
         <fieldset>
             <label for="productType">Type Switcher</label>
             <select name="product_type" id="productType">
-                <option value="dvd">DVD</option>
-                <option value="book">DVD</option>
-                <option value="furniture">DVD</option>
+                <option value="dvd" selected>DVD</option>
+                <option value="book">Book</option>
+                <option value="furniture">Furniture</option>
             </select>
         </fieldset>
-        <div id="DVD" class="product-type-card">
+       
+        <div id="DVD" class="product-type-card type-dvd">
             <fieldset>
                 <label for="size">Size (MB)</label>
                 <input type="number" id="size" name="size">
             </fieldset>
             <p>Description</p>
         </div>
-        <div id="Furniture" class="product-type-card">
+       
+        <div id="Furniture" class="product-type-card type-furniture">
             <fieldset>
                 <label for="height">Height (CM)</label>
                 <input type="number" id="height" name="height">
@@ -51,13 +57,15 @@
             </fieldset>
             <p>Description</p>
         </div>
-        <div id="Book" class="product-type-card">
+       
+        <div id="Book" class="product-type-card type-book">
             <fieldset>
                 <label for="weight">Weight (KG)</label>
                 <input type="number" id="size" name="weight">
             </fieldset>
             <p>Description</p>
         </div>
+ 
     </form>
 </section>
  

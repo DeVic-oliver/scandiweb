@@ -4,11 +4,11 @@
     </div>
     <div>
         <a href="/scandiweb/?class=ProductController&method=addProduct">ADD</a>
-        <button>MASS DELETE</button>
+        <button id="mass-delete">MASS DELETE</button>
     </div>
 </section>
 <section>
-    <form action="" class="product-list">
+    <form action="/scandiweb/?class=ProductController&method=deleteProducts" method="POST" id="products-select-form" class="product-list">
         {{list}}
     </form>
 </section>
