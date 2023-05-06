@@ -10,7 +10,9 @@ $(()=>{
             let cardTypeID = element.id.toLowerCase(); 
             if(cardTypeID === selectedProductType){
                 $('#'+element.id).css("display", "block");
+                $('#'+element.id).removeAttr("disabled");
             }else{
+                $('#'+element.id).attr("disabled", "disabled");
                 $('#'+element.id).css("display", "none");
             }
         });
