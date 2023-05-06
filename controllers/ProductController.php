@@ -1,6 +1,7 @@
 <?php
     require './config.php';
     require './models/Product.php';
+    require './services/ProductCardRenderer.php';
 
     class ProductController{
         
@@ -13,35 +14,11 @@
         
         public function listProducts(){
             $this->html = file_get_contents(PROJECT_ROOT . 'views/product/product-list.html');
-            $card = file_get_contents(PROJECT_ROOT . 'views/product/product-card.html');
             
-            $cards = '';
             $products = Product::getAllProducts();
-            foreach ($products as $product) {
-                $tempCard = str_replace('{{sku}}', $product['sku'], $card);
-                $tempCard = str_replace('{{name}}', $product['name'], $tempCard);
-                $tempCard = str_replace('{{price}}', $product['price'], $tempCard);
-
-                if($product['type'] == 'furniture'){
-                    $infoHtml = "Dimensions: $product[height]x$product[width]x$product[length]";
-                    $tempCard = str_replace('{{info}}', $infoHtml, $tempCard);
-                }
-
-                if($product['type'] == 'dvd'){
-                    $infoHtml = "Size: $product[size] MB";
-                    $tempCard = str_replace('{{info}}', $infoHtml, $tempCard);
-                }
-
-                if($product['type'] == 'book'){
-                    $infoHtml = "Weight: $product[weight]";
-                    $tempCard = str_replace('{{info}}', $infoHtml, $tempCard);
-                }
-
-                $cards .= $tempCard;
-            }
-
-            $this->html = str_replace('{{list}}', $cards, $this->html);
-            
+            $renderer = new ProductCardRenderer();
+            $cardsString = $renderer->renderProductsIntoString($products);
+            $this->html = str_replace('{{list}}', $cardsString, $this->html);
         }
         
         public function addProduct(){
