@@ -1,3 +1,7 @@
 body{
     background-color: antiquewhite;
 }
+
+.product-type-card:not(.type-dvd){
+    display: none;
+}

@@ -34,6 +34,25 @@
             return $stmt;
         }
 
+        public static function deleteProducts($arr = []){
+            $sql = "DELETE from products WHERE sku IN (:skuslist);";
+            $skuList = '';
+            foreach ($arr as $value) {
+                $skuList .= "'$value',";
+            }
+            $skuList = rtrim($skuList, ',');
+            
+            $sql = str_replace(':skuslist', $skuList, $sql);
+
+            $conn = self::getConnection();
+            try {
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+            } catch (\PDOStatement $th) {
+                echo $th;
+            }
+        }
+
         private static function getConnection(){
             $credentials = parse_ini_file(PROJECT_ROOT . 'config/.conf');
             $host = $credentials['host'];

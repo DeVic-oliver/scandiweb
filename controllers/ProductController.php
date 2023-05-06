@@ -17,10 +17,26 @@
             
             $cards = '';
             $products = Product::getAllProducts();
-            foreach ($products as $value) {
-                $tempCard = str_replace('{{sku}}', $value['sku'], $card);
-                $tempCard = str_replace('{{name}}', $value['name'], $tempCard);
-                $tempCard = str_replace('{{price}}', $value['price'], $tempCard);
+            foreach ($products as $product) {
+                $tempCard = str_replace('{{sku}}', $product['sku'], $card);
+                $tempCard = str_replace('{{name}}', $product['name'], $tempCard);
+                $tempCard = str_replace('{{price}}', $product['price'], $tempCard);
+
+                if($product['type'] == 'furniture'){
+                    $infoHtml = "Dimensions: $product[height]x$product[width]x$product[length]";
+                    $tempCard = str_replace('{{info}}', $infoHtml, $tempCard);
+                }
+
+                if($product['type'] == 'dvd'){
+                    $infoHtml = "Size: $product[size] MB";
+                    $tempCard = str_replace('{{info}}', $infoHtml, $tempCard);
+                }
+
+                if($product['type'] == 'book'){
+                    $infoHtml = "Weight: $product[weight]";
+                    $tempCard = str_replace('{{info}}', $infoHtml, $tempCard);
+                }
+
                 $cards .= $tempCard;
             }
 
@@ -31,7 +47,24 @@
         public function addProduct(){
             $this->html = file_get_contents(PROJECT_ROOT . 'views/product-add.html');
         }
+
+        public function storeProduct(){
+            if(isset($_REQUEST) && !empty($_REQUEST['product_sku'])){
+                Product::saveProduct($_REQUEST);
+                header('Location: /scandiweb/?class=ProductController&method=addProduct');
+            }
+        }
         
+        public function deleteProducts(){
+            if(isset($_REQUEST)){
+                $skuArr = array_filter($_REQUEST, function($key) {
+                    return strpos($key, 'sku_') === 0;
+                 }, ARRAY_FILTER_USE_KEY);
+                Product::deleteProducts($skuArr);
+                header('Location: /scandiweb/');
+            }
+        }
+
         public function show(){
             echo $this->html;
         }
