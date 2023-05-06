@@ -36,13 +36,9 @@
 
         public static function deleteProducts($arr = []){
             $sql = "DELETE from products WHERE sku IN (:skuslist);";
-            $skuList = '';
-            foreach ($arr as $value) {
-                $skuList .= "'$value',";
-            }
-            $skuList = rtrim($skuList, ',');
             
-            $sql = str_replace(':skuslist', $skuList, $sql);
+            $skuListString = self::getSkuListStringFromArray($arr);
+            $sql = str_replace(':skuslist', $skuListString, $sql);
 
             $conn = self::getConnection();
             try {
@@ -51,6 +47,20 @@
             } catch (\PDOStatement $th) {
                 echo $th;
             }
+        }
+
+        private static function getSkuListStringFromArray($arr = []) : string
+        {
+            $skuListString = '';
+            foreach ($arr as $value) {
+                $skuListString .= "'$value',";
+            }
+            return self::trimLastCommaFromString($skuListString);
+        }
+
+        private static function trimLastCommaFromString(string $string) : string
+        {
+            return rtrim($string, ',');
         }
 
         private static function getConnection(){
