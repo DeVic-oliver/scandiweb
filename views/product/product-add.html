@@ -28,43 +28,36 @@
         <fieldset>
             <label for="productType">Type Switcher</label>
             <select name="product_type" id="productType">
-                <option value="dvd" selected>DVD</option>
-                <option value="book">Book</option>
-                <option value="furniture">Furniture</option>
+                <option value="DVD" selected>DVD</option>
+                <option value="Book">Book</option>
+                <option value="Furniture">Furniture</option>
             </select>
         </fieldset>
        
-        <div id="DVD" class="product-type-card type-dvd">
-            <fieldset>
-                <label for="size">Size (MB)</label>
-                <input type="number" id="size" name="size">
-            </fieldset>
-            <p>Description</p>
-        </div>
-       
-        <div id="Furniture" class="product-type-card type-furniture">
-            <fieldset>
+        <fieldset id="DVD" class="product-type-card type-dvd">
+            <label for="size">Size (MB)</label>
+            <input type="number" id="size" name="size">
+        </fieldset>
+                    
+        <fieldset id="Book" class="product-type-card type-book" disabled="disabled">
+            <label for="weight">Weight (KG)</label>
+            <input type="number" id="size" name="weight">
+        </fieldset>
+
+        <fieldset id="Furniture" class="product-type-card type-furniture" disabled="disabled">
+            <div>
                 <label for="height">Height (CM)</label>
                 <input type="number" id="height" name="height">
-            </fieldset>
-            <fieldset>
+            </div>
+            <div>
                 <label for="width">Width (CM)</label>
                 <input type="number" id="width" name="width">
-            </fieldset>
-            <fieldset>
+            </div>
+            <div>
                 <label for="length">Length (CM)</label>
                 <input type="number" id="length" name="length">
-            </fieldset>
-            <p>Description</p>
-        </div>
-       
-        <div id="Book" class="product-type-card type-book">
-            <fieldset>
-                <label for="weight">Weight (KG)</label>
-                <input type="number" id="size" name="weight">
-            </fieldset>
-            <p>Description</p>
-        </div>
+            </div>
+        </fieldset>
  
     </form>
 </section>
