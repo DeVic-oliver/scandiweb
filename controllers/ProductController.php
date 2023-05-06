@@ -45,7 +45,7 @@
         }
         
         public function addProduct(){
-            $this->html = file_get_contents(PROJECT_ROOT . 'views/product-add.html');
+            $this->html = file_get_contents(PROJECT_ROOT . 'views/product/product-add.html');
         }
 
         public function storeProduct(){
