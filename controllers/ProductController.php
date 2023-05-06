@@ -57,12 +57,24 @@
         
         public function deleteProducts(){
             if(isset($_REQUEST)){
-                $skuArr = array_filter($_REQUEST, function($key) {
-                    return strpos($key, 'sku_') === 0;
-                 }, ARRAY_FILTER_USE_KEY);
+                $skuArr = $this->getSkusToDelete($_REQUEST);
                 Product::deleteProducts($skuArr);
                 header('Location: /scandiweb/');
             }
+        }
+
+        private function getSkusToDelete($arr = []) : array
+        {
+            $onlySkusArr = $this->getOnlyIndexThatBeginWithSKU($arr);
+            return array_values($onlySkusArr);
+        }
+
+        private function getOnlyIndexThatBeginWithSKU($arr = []) : array
+        {
+            $skuArr = array_filter($_REQUEST, function($key) {
+                return strpos($key, 'sku_') === 0;
+            }, ARRAY_FILTER_USE_KEY);
+            return $skuArr;
         }
 
         public function show(){
