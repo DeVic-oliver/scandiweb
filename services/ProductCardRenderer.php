@@ -17,14 +17,19 @@ class ProductCardRenderer{
         $cardsString = '';
         foreach ($arr as $product) {
             if(class_exists($product['type'])){
-                $filteredProduct = array_filter($product, function($value) {
-                    return !is_null($value);
-                });
+                $filteredProduct = $this->getOnlyIndexesWithNotNullValues($product);
                 $className = $product['type'];
                 $productObject = new $className($product['sku'], $product['name'], $product['price'], $product['type'], $filteredProduct);
                 $cardsString .= $productObject->replaceHtmlStringMarkupsWithProductInfo($this->card);
             }
         }
         return $cardsString;
+    }
+
+    private function getOnlyIndexesWithNotNullValues($arr = []) : array
+    {
+       return array_filter($arr, function($value) {
+            return !is_null($value);
+        });
     }
 }

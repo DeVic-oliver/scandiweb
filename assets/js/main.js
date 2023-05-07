@@ -1,4 +1,11 @@
 $(()=>{
+    $('.product-card').on('click', (e)=>{
+        let checkboxElement = $(e.currentTarget).find('.product-checkbox');
+        let checkboxProperty = checkboxElement.prop('checked');
+        checkboxElement.prop('checked', !checkboxProperty);
+        $(e.currentTarget).toggleClass("product-card-selected");
+    })
+
     $('#store-product').on('click', ()=>{
         $('#store-product-form').trigger('submit');
     })
