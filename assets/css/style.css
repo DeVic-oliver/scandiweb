@@ -29,7 +29,8 @@ fieldset{
     margin-bottom: 20px;
 }
 
-fieldset input{
+fieldset input,
+fieldset select{
     border: 1px solid #999;
     border-radius: 5px;
     padding: 5px;
@@ -76,10 +77,17 @@ h4{
     font-size: 24px;
 }
 
-
 .container{
     max-width: 1920px;
     padding: 3rem;
+}
+
+.feedback-error-container{
+    text-align: center;
+    padding: 1rem;
+    font-size: 24px;
+    color: #de2c2c;
+    text-transform: uppercase;
 }
 
 .button{
@@ -156,7 +164,6 @@ footer{
     transition: all .3s ease-in-out;
 }
 
-.product-card:hover,
 .product-card-selected{
     background-color: #fff9d8;
 }
@@ -249,5 +256,9 @@ footer{
     .product-list{
         grid-template-columns: 1fr;
         row-gap: 40px;
+    }
+
+    .product-type-card{
+        width: auto;
     }
 }
