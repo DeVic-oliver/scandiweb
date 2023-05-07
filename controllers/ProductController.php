@@ -6,6 +6,7 @@
     class ProductController{
         
         private $html;
+        private $feedback;
 
         function __construct()
         {
@@ -14,7 +15,6 @@
         
         public function listProducts(){
             $this->html = file_get_contents(PROJECT_ROOT . 'views/product/product-list.html');
-            
             $products = Product::getAllProducts();
             $renderer = new ProductCardRenderer();
             $cardsString = $renderer->renderProductsIntoString($products);
@@ -29,9 +29,9 @@
         private function replaceFeedbackMarkup(){
             session_start();
             if(isset($_SESSION['store_error'])){
-                $this->html = str_replace('{{feedback_error}}', $_SESSION['store_error'], $this->html);
+                $this->html = str_replace('{{feedback}}', $_SESSION['store_error'], $this->html);
             }else{
-                $this->html = str_replace('{{feedback_error}}', '', $this->html);
+                $this->html = str_replace('{{feedback}}', '', $this->html);
             }
             session_destroy();
         }
@@ -54,9 +54,14 @@
         public function deleteProducts(){
             if(isset($_REQUEST)){
                 $skuArr = $this->getSkusToDelete($_REQUEST);
-                Product::deleteProducts($skuArr);
-                header('Location: /scandiweb/');
-                exit;
+                try {
+                    Product::deleteProducts($skuArr);
+                    header('Location: /scandiweb/');
+                    exit;
+                } catch (PDOException $e) {
+                    header('Location: /scandiweb/');
+                    exit;
+                }
             }
         }
 
