@@ -20,7 +20,7 @@ class Furniture extends ProductBase{
         $tempCard = str_replace('{{sku}}', $this->sku, $html);
         $tempCard = str_replace('{{name}}', $this->name, $tempCard);
         $tempCard = str_replace('{{price}}', $this->price, $tempCard);
-        $furnitureInfo = "Dimensions: $this->height\x$this->width\x$this->length";
+        $furnitureInfo = "Dimensions: $this->height x $this->width x $this->length";
         $tempCard = str_replace('{{info}}', $furnitureInfo, $tempCard);
         return $tempCard;
     }
