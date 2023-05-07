@@ -1,18 +1,18 @@
 @font-face {
     font-family: 'Poppins-Light';
-    src: url('http://localhost/scandiweb/assets/fonts/Poppins-Light.ttf');
+    src: url('http://localhost/scandiweb/assets/fonts/poppins/Poppins-Light.ttf');
 }
 @font-face {
     font-family: 'Poppins-Regular';
-    src: url('http://localhost/scandiweb/assets/fonts/Poppins-Regular.ttf');
+    src: url('http://localhost/scandiweb/assets/fonts/poppins/Poppins-Regular.ttf');
 }
 @font-face {
     font-family: 'Poppins-SemiBold';
-    src: url('http://localhost/scandiweb/assets/fonts/Poppins-SemiBold.ttf');
+    src: url('http://localhost/scandiweb/assets/fonts/poppins/Poppins-SemiBold.ttf');
 }
 @font-face {
     font-family: 'Poppins-Bold';
-    src: url('http://localhost/scandiweb/assets/fonts/Poppins-Bold.ttf');
+    src: url('http://localhost/scandiweb/assets/fonts/poppins/Poppins-Bold.ttf');
 }
 
 *{
@@ -50,7 +50,7 @@ h4{
 
 .container{
     max-width: 1920px;
-    padding: 5rem;
+    padding: 3rem;
 }
 
 .button{
@@ -77,8 +77,13 @@ h4{
 .hero{
     border-bottom: 2px solid #333;
     display: flex;
+    justify-content: space-between;
     padding-bottom: 15px;
     margin-bottom: 40px;
+}
+
+.hero > *{
+    margin-bottom: 20px;
 }
 
 footer{
@@ -88,14 +93,29 @@ footer{
     text-align: center;
 }
 
-.hero > *{
-    margin-bottom: 20px;
+.hero-actions-container{
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.hero-actions-container > *{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
 }
 
 .product-card{
     align-items: center;
     background: #f6f6f6;
-    border: 1px solid #666;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     font-size: 18px;
@@ -103,6 +123,10 @@ footer{
     padding: 1.20rem;
     position: relative;
     text-align: center;
+}
+
+.product-title{
+    text-transform: capitalize;
 }
 
 .product-card > div{
@@ -121,6 +145,31 @@ footer{
     margin-bottom: 10px;
 }
 
+@media screen and (min-width: 900px) and (max-width: 1024px){
+    .container{
+        padding: 2rem;
+    }
+
+    .product-list{
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 899px){
+    .hero > *{
+        margin: 20px 0;
+    }
+
+    .container{
+        padding: 1.5rem;
+    }
+
+    .product-list{
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
 
 @media screen and (max-width: 767px) {
     h1{
@@ -146,8 +195,6 @@ footer{
     }
 
     .hero-actions-container{
-        display: flex;
-        justify-content: space-between;
         flex-direction: row-reverse;
         max-width: 340px;
         margin-left: auto;
@@ -164,7 +211,6 @@ footer{
     }
 
     .product-list{
-        display: grid;
         grid-template-columns: 1fr;
         row-gap: 40px;
     }
