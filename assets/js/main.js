@@ -7,7 +7,7 @@ $(()=>{
     })
 
     $('#store-product').on('click', ()=>{
-        $('#store-product-form').trigger('submit');
+        $('#product_form').trigger('submit');
     })
     
     const cardTypes =  Array.from($('.product-type-card'));
