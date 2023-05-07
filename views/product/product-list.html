@@ -3,12 +3,12 @@
         <h1>Product List</h1>
     </div>
     <div class="hero-actions-container">
-        <a href="/scandiweb/?class=ProductController&method=addProduct" class="button">ADD</a>
+        <a href="/scandiweb/addProduct" class="button">ADD</a>
         <button id="mass-delete" class="button">MASS DELETE</button>
     </div>
 </section>
 <section>
-    <form action="/scandiweb/?class=ProductController&method=deleteProducts" method="POST" id="products-select-form" class="product-list">
+    <form action="/scandiweb/deleteProducts" method="POST" id="products-select-form" class="product-list">
         {{list}}
     </form>
 </section>

@@ -28,7 +28,13 @@
         public function storeProduct(){
             if(isset($_REQUEST) && !empty($_REQUEST['product_sku'])){
                 Product::saveProduct($_REQUEST);
-                header('Location: /scandiweb/?class=ProductController&method=addProduct');
+                header('Location: /scandiweb/addProduct');
+                exit;
+            }
+            else{
+                ///NECESSITA DE UM AVISO DE PREENCHIMENTO DE FORMULÁRIO
+                header('Location: /scandiweb/addProduct');
+                exit;
             }
         }
         
@@ -37,6 +43,7 @@
                 $skuArr = $this->getSkusToDelete($_REQUEST);
                 Product::deleteProducts($skuArr);
                 header('Location: /scandiweb/');
+                exit;
             }
         }
 

@@ -1,6 +1,6 @@
 $(()=>{
     $('.product-card').on('click', (e)=>{
-        let checkboxElement = $(e.currentTarget).find('.product-checkbox');
+        let checkboxElement = $(e.currentTarget).find('.delete-checkbox');
         let checkboxProperty = checkboxElement.prop('checked');
         checkboxElement.prop('checked', !checkboxProperty);
         $(e.currentTarget).toggleClass("product-card-selected");
