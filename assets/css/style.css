@@ -24,6 +24,35 @@ body {
     font-family: 'Poppins-Regular', sans-serif;
 }
 
+fieldset{
+    border: none;
+    margin-bottom: 20px;
+}
+
+fieldset input{
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.product-type-card{
+    border: 1px solid #666;
+    max-width: 350px;
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+}
+
+.product-type-card > div{
+    margin-bottom: 15px;
+}
+
+.product-type-card .instructions{
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
 h1,
 h2,
 h3,
