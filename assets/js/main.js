@@ -1,9 +1,6 @@
 $(()=>{
-    $('.product-card').on('click', (e)=>{
-        let checkboxElement = $(e.currentTarget).find('.delete-checkbox');
-        let checkboxProperty = checkboxElement.prop('checked');
-        checkboxElement.prop('checked', !checkboxProperty);
-        $(e.currentTarget).toggleClass("product-card-selected");
+    $('.delete-checkbox').on('click', (e)=>{
+        $(e.currentTarget).parents('.product-card').toggleClass("product-card-selected");
     })
 
     $('#store-product').on('click', ()=>{
