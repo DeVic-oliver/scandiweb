@@ -7,7 +7,8 @@ $(()=>{
     })
 
     $('#store-product').on('click', ()=>{
-        $('#product_form').trigger('submit');
+        let inputSubmit = document.querySelector('#submit-add-product');
+        inputSubmit.click();
     })
     
     const cardTypes =  Array.from($('.product-type-card'));
@@ -30,3 +31,4 @@ $(()=>{
     })
     
 })
+
