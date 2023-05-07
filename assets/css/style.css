@@ -98,7 +98,6 @@ h4{
     cursor: pointer;
     font-size: 16px;
     padding: 0.25rem 1rem;
-    text-transform: uppercase;
     transition: all .3s ease-in-out;
 }
 
