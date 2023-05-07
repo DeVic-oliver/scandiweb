@@ -1,2 +1,4 @@
 RewriteEngine On
 RewriteRule ^addProduct$ /scandiweb/?class=ProductController&method=addProduct [L]
+RewriteRule ^deleteProducts$ /scandiweb/?class=ProductController&method=deleteProducts [L]
+RewriteRule ^storeProduct$ /scandiweb/?class=ProductController&method=storeProduct [L]
