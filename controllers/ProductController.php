@@ -6,7 +6,6 @@
     class ProductController{
         
         private $html;
-        private $feedback;
 
         function __construct()
         {
